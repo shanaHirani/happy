@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="available_spot">available spot: %s</string>
+    <string name="total_spot">total spot: %s</string>
+    <string name="facility_name">facility name: %s</string>
+    <string name="address"> address: %s</string>
+    <string name="fee_website">fee website: %s</string>
+
+</resources>

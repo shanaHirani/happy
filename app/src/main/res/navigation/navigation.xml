@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/carParkListFragment">
+
+    <fragment
+        android:id="@+id/carParkListFragment"
+        android:name="com.jetbrains.handson.mpp.myapplication.ui.CarParkListFragment"
+        android:label="fragment_car_park_list"
+        tools:layout="@layout/fragment_car_park_list" >
+        <action
+            android:id="@+id/action_carParkListFragment_to_mapFragment"
+            app:destination="@id/mapFragment"
+            app:popUpTo="@id/mapFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_carParkListFragment_to_carParkDetailFragment"
+            app:destination="@id/carParkDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.jetbrains.handson.mpp.myapplication.ui.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_carParkListFragment"
+            app:destination="@id/carParkListFragment"
+            app:popUpTo="@id/carParkListFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mapFragment_to_carParkDetailFragment"
+            app:destination="@id/carParkDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carParkDetailFragment"
+        android:name="com.jetbrains.handson.mpp.myapplication.ui.CarParkDetailFragment"
+        android:label="fragment_car_park_detail"
+        tools:layout="@layout/fragment_car_park_detail" >
+        <argument
+            android:name="carPark"
+            app:argType="com.jetbrains.handson.mpp.myapplication.domain.CarPark" />
+    </fragment>
+</navigation>

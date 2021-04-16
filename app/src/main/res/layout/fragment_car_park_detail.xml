@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.CarParkDetailFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jetbrains.handson.mpp.myapplication.viewmodels.CarParkDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:facilityNameString="@{viewModel.carParkDetail.facilityName}"
+            app:layout_constraintBottom_toTopOf="@+id/total_spots"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/total_spots"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/available_spot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text"
+            app:totalSpotsString="@{viewModel.carParkDetail.totalSpots}" />
+
+        <TextView
+            android:id="@+id/available_spot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/address_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_spots"
+            app:availableSpotsString="@{viewModel.carParkDetail.availableSpots}"/>
+
+        <TextView
+            android:id="@+id/address_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:addressString="@{viewModel.carParkDetail.address}"
+            app:layout_constraintBottom_toTopOf="@+id/fee_website"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/available_spot" />
+
+        <TextView
+            android:id="@+id/fee_website"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:feeWebsiteString="@{viewModel.carParkDetail.feeWebsite}"
+            app:layout_constraintBottom_toTopOf="@+id/extra_info_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address_text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/extra_info_list"
+            android:layout_width="0dp"
+            android:layout_height="450dp"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fee_website"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
