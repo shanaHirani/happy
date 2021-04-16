@@ -20,7 +20,7 @@ import com.jetbrains.handson.mpp.myapplication.adapter.CarParkAdapter
 fun setAvailableSpotsString(textView: TextView,availableSpot: Int){
  var spannableString = SpannableString(textView.resources.getString(R.string.available_spot , availableSpot.toString()))
  val styleSpan = StyleSpan(Typeface.BOLD)
- spannableString.setSpan(styleSpan,0,14,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+ spannableString.setSpan(styleSpan,0,15,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
  textView.text =spannableString
 }
 
