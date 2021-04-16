@@ -56,6 +56,12 @@ class CarParkListViewModel(application: Application) : ViewModel() {
         _eventShowMap.value = true
     }
 
+    fun onRefresh() {
+        coroutineScope.launch {
+            carParkRepository.refreshCarPark()
+        }
+    }
+
     fun onShowMapComplete() {
         _eventShowMap.value = false
     }
@@ -67,23 +73,11 @@ class CarParkListViewModel(application: Application) : ViewModel() {
     fun displayCarParkDetailComplete() {
         _navigateToSelectedCarPark.value = null
     }
-/*
-    private fun getCarParks() {
-        coroutineScope.launch {
-            _status.value = ApiStatus.LOADING
-            var getCarParksDeferred = Api.retrofitService.getCarParks()
-            try {
-                var result = getCarParksDeferred.await()
-                _carParks.value = result.asDomainModel()
-                _status.value = ApiStatus.DONE
-            }catch (t:Throwable){
-                _carParks.value = ArrayList()
-                _status.value = ApiStatus.ERROR
-            }
-        }
 
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
-*/
 }
 
 class CarParkListViewModelFactory(

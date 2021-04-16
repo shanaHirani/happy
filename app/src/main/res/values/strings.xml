@@ -6,5 +6,8 @@
     <string name="facility_name">facility name: %s</string>
     <string name="address"> address: %s</string>
     <string name="fee_website">fee website: %s</string>
+    <string name="refresh">refresh</string>
+    <string name="show_map">show map</string>
+    <string name="show_list">show list</string>
 
 </resources>

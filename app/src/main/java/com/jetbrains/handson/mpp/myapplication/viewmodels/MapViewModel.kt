@@ -21,9 +21,9 @@ class MapViewModel(application: Application): ViewModel() {
     val eventShowCarParkList : LiveData<Boolean>
         get() = _eventShowCarParkList
 
-    private val _eventShowCarParkDetail = MutableLiveData<Boolean>()
-    val eventShowCarParkDetail : LiveData<Boolean>
-        get() = _eventShowCarParkDetail
+    private val _navigateToSelectedCarPark = MutableLiveData<CarPark>()
+    val navigateToSelectedCarPark: LiveData<CarPark>
+        get() = _navigateToSelectedCarPark
 
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -34,7 +34,7 @@ class MapViewModel(application: Application): ViewModel() {
     val carParks = carParkRepository.carParks
 
     init {
-        _eventShowCarParkDetail.value = false
+        _navigateToSelectedCarPark.value = null
         _eventShowCarParkList.value = false
     }
 
@@ -44,16 +44,27 @@ class MapViewModel(application: Application): ViewModel() {
         _eventShowCarParkList.value=true
     }
 
+    fun onRefresh(){
+        coroutineScope.launch {
+            carParkRepository.refreshCarPark()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+
     fun onShowListComplete(){
         _eventShowCarParkList.value=false
     }
 
-    fun onShowDetail(){
-        _eventShowCarParkDetail.value=true
+    fun navigateToSelectedCarPark(title:String) {
+        _navigateToSelectedCarPark.value = carParks.value?.find {title.contains(it.facilityName)}
     }
 
-    fun onShowDetailComplete(){
-        _eventShowCarParkDetail.value=false
+    fun displayCarParkDetailComplete() {
+        _navigateToSelectedCarPark.value = null
     }
 }
 

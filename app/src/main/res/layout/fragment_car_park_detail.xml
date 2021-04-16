@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
 
         <!-- TODO: Update blank fragment layout -->
 
@@ -20,6 +21,7 @@
             android:id="@+id/text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:textSize="14sp"
             app:facilityNameString="@{viewModel.carParkDetail.facilityName}"
             app:layout_constraintBottom_toTopOf="@+id/total_spots"
@@ -31,6 +33,7 @@
             android:id="@+id/total_spots"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             app:layout_constraintBottom_toTopOf="@+id/available_spot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +44,7 @@
             android:id="@+id/available_spot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             app:layout_constraintBottom_toTopOf="@+id/address_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +55,7 @@
             android:id="@+id/address_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             app:addressString="@{viewModel.carParkDetail.address}"
             app:layout_constraintBottom_toTopOf="@+id/fee_website"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +66,7 @@
             android:id="@+id/fee_website"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             app:feeWebsiteString="@{viewModel.carParkDetail.feeWebsite}"
             app:layout_constraintBottom_toTopOf="@+id/extra_info_list"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +76,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/extra_info_list"
             android:layout_width="0dp"
-            android:layout_height="450dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

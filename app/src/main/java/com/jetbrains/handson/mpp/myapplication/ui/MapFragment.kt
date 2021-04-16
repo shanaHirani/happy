@@ -66,6 +66,17 @@ class MapFragment : Fragment() ,OnMapReadyCallback{
         viewModel.carParks.observe(this, Observer {
             addMarkers(googleMap)
         })
+
+        viewModel.navigateToSelectedCarPark.observe(this, Observer { carPark->
+            if (carPark != null) {
+                this.findNavController().navigate(
+                    MapFragmentDirections
+                        .actionMapFragmentToCarParkDetailFragment(carPark)
+                )
+                viewModel.displayCarParkDetailComplete()
+            }
+        })
+
         return binding.root
     }
 
@@ -78,15 +89,7 @@ class MapFragment : Fragment() ,OnMapReadyCallback{
 
     private fun setShowDetails(googleMap: GoogleMap) {
         googleMap.setOnInfoWindowClickListener { marker ->
-
-            val carPark = viewModel.carParks.value?.find { marker.title.contains(it.facilityName) }
-            if (carPark != null) {
-                this.findNavController().navigate(
-                    MapFragmentDirections
-                        .actionMapFragmentToCarParkDetailFragment(carPark)
-                )
-                viewModel.onShowDetailComplete()
-            }
+            viewModel.navigateToSelectedCarPark(marker.title)
         }
     }
 
@@ -99,14 +102,15 @@ class MapFragment : Fragment() ,OnMapReadyCallback{
     }
 
     private fun addMarkers(googleMap: GoogleMap) {
+        val app = requireNotNull(activity).application
         if(viewModel.carParks.value != null)
         for(carPark in viewModel.carParks.value!!){
             val latitude2 = carPark.latitude
             val longitude2 = carPark.longitude
             val homeLatLng2 = LatLng(latitude2, longitude2)
             val a  = MarkerOptions().position(homeLatLng2)
-                .title("name: "+carPark.facilityName)
-                .snippet("available spot: "+carPark.availableSpots.toString())
+                .title(app.applicationContext.getString(R.string.facility_name,carPark.facilityName))
+                .snippet(app.applicationContext.getString(R.string.available_spot,carPark.availableSpots.toString()))
 
             googleMap.addMarker(a)
         }
