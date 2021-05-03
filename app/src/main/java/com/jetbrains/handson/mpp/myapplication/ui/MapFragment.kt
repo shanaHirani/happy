@@ -54,7 +54,7 @@ class MapFragment : Fragment() ,OnMapReadyCallback{
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
-        viewModel.eventShowCarParkList.observe(this, Observer { navigateToList->
+        viewModel.eventShowCarParkList.observe(viewLifecycleOwner, Observer { navigateToList->
             if(navigateToList){
                 this.findNavController().navigate(
                     R.id.action_mapFragment_to_carParkListFragment
@@ -63,11 +63,11 @@ class MapFragment : Fragment() ,OnMapReadyCallback{
             }
         })
 
-        viewModel.carParks.observe(this, Observer {
+        viewModel.carParks.observe(viewLifecycleOwner, Observer {
             addMarkers(googleMap)
         })
 
-        viewModel.navigateToSelectedCarPark.observe(this, Observer { carPark->
+        viewModel.navigateToSelectedCarPark.observe(viewLifecycleOwner, Observer { carPark->
             if (carPark != null) {
                 this.findNavController().navigate(
                     MapFragmentDirections

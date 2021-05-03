@@ -47,12 +47,12 @@ class CarParkListFragment : Fragment() {
          }))
         binding.carParkList.adapter = adapter
 
-        viewModel.status.observe(this, Observer {
+        viewModel.status.observe(viewLifecycleOwner, Observer {
 
         })
 
 
-        viewModel.navigateToSelectedCarPark.observe(this, Observer {
+        viewModel.navigateToSelectedCarPark.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 this.findNavController().navigate(
                     CarParkListFragmentDirections
@@ -62,7 +62,7 @@ class CarParkListFragment : Fragment() {
             }
         })
 
-        viewModel.eventShowMap.observe(this, Observer { navigateToMap ->
+        viewModel.eventShowMap.observe(viewLifecycleOwner, Observer { navigateToMap ->
             if (navigateToMap) {
                 this.findNavController().navigate(
                     R.id.action_carParkListFragment_to_mapFragment
