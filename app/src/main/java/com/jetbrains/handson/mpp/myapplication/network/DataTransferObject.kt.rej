@@ -1,0 +1,14 @@
+diff a/app/src/main/java/com/jetbrains/handson/mpp/myapplication/network/DataTransferObject.kt b/app/src/main/java/com/jetbrains/handson/mpp/myapplication/network/DataTransferObject.kt	(rejected hunks)
+@@ -20,10 +20,10 @@
+     val latitude: Double,
+     val longitude: Double,
+     val feeWebsite: String,
+-    @Json(name = "details") val extraInfoList: List<propertyImage>
++    @Json(name = "details") val extraInfoList: List<ExtraInformation>
+ )
+ 
+-data class propertyImage(
++data class ExtraInformation(
+     val header: String,
+     val label: String,
+     val value: String?

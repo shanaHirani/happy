@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.jetbrains.handson.mpp.myapplication.R
 import com.jetbrains.handson.mpp.myapplication.databinding.ActivityMainBinding
+
 ///test1////
-///test5////
+///test6////
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
