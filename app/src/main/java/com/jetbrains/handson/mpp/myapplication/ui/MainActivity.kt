@@ -7,7 +7,7 @@ import com.jetbrains.handson.mpp.myapplication.R
 import com.jetbrains.handson.mpp.myapplication.databinding.ActivityMainBinding
 
 ///test1////
-///test6////
+///test7////
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
