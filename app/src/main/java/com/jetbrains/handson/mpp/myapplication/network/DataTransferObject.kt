@@ -20,10 +20,10 @@ data class NetworkCarPark(
     val latitude: Double,
     val longitude: Double,
     val feeWebsite: String,
-    @Json(name = "details") val extraInfoList: List<propertyImage>
+    @Json(name = "details") val extraInfoList: List<ExtraInformation>
 )
 
-data class propertyImage(
+data class ExtraInformation(
     val header: String,
     val label: String,
     val value: String?
