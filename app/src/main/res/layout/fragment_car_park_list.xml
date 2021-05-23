@@ -6,7 +6,6 @@
     tools:context=".ui.CarParkListFragment">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.jetbrains.handson.mpp.myapplication.viewmodels.CarParkListViewModel" />
